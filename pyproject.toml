@@ -1,0 +1,77 @@
+[project]
+name = "CDSmartLoader"
+version = "0.1.0"
+description = "A tool for machine learning data curation and cluster based data selection from computer tomography data."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "h5py>=3.14.0",
+    "imageio>=2.37.0",
+    "ipykernel>=6.29.5",
+    "itk>=5.4.3",
+    "itk-filtering>=5.4.3",
+    "itk-numerics>=5.4.3",
+    "itk-registration>=5.4.3",
+    "itk-segmentation>=5.4.3",
+    "jupyter>=1.1.1",
+    "matplotlib>=3.9.4",
+    "opencv-python>=4.11.0.86",
+    "pandas>=2.3.0",
+    "plotly>=6.1.2",
+    "pyvista>=0.45.2",
+    "scikit-image>=0.24.0",
+    "scikit-learn>=1.6.1",
+    "seaborn>=0.13.2",
+    "simpleitk>=2.5.0",
+    "tqdm>=4.67.1",
+    "vtk>=9.4.2",
+    "pydantic>=2.0.0",
+    "pyyaml>=6.0.0",
+    "loguru>=0.7.0",
+    "torch>=2.0.0",
+    "click>=8.0.0",
+]
+
+[project.scripts]
+cdsmartloader = "cdsmartloader.cli.main:cli"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pyright]
+# ...
+venvPath = "."
+venv = ".venv"
+
+[tool.ruff]
+# Ruff configuration for linting and formatting
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "N",   # pep8-naming
+    "UP",  # pyupgrade
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+]
+ignore = [
+    "E501",  # line too long (handled by formatter)
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+[tool.ruff.lint.isort]
+known-first-party = ["cdsmartloader"]
